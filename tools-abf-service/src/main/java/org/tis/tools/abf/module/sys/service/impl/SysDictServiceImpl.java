@@ -3,6 +3,7 @@ package org.tis.tools.abf.module.sys.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.tis.tools.abf.module.sys.dao.SysDictMapper;
@@ -38,7 +39,7 @@ public class SysDictServiceImpl  extends ServiceImpl<SysDictMapper,SysDict> impl
      * */
     @Override
     public SysDict addDict(SysDict sysDict) throws SysManagementException {
-        if(!"".equals(sysDict.getGuidParents())){
+        if(StringUtils.isNotBlank(sysDict.getGuidParents())){
             SysDictItem sysDictItem = iSysDictItemService.guidQueryOneSysDic(sysDict.getGuidParents());
             if(sysDictItem == null ){
                 throw new SysManagementException(

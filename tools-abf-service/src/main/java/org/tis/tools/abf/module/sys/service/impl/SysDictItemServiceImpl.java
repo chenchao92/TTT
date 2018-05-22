@@ -47,7 +47,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper,SysDic
         }
         sysDictItem.setGuidDict(guidDict);
         sysDictItem.setItemName(itemName);
-        sysDictItem.setItemType(DictFromType.valueOf(itemType).toString());
+        sysDictItem.setItemType(itemType);
         sysDictItem.setItemValue(itemValue);
         sysDictItem.setSendValue(sendValue);
         sysDictItem.setSeqno(new BigDecimal(seqNo));
@@ -64,6 +64,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper,SysDic
         return sysDictItems;
     }
 
+
     @Override
     public SysDictItem editSysDictItem(String guid, String guidDict, String itemName, String itemType, String itemValue, String sendValue, String seqNo, String itemDesc) throws SysManagementException {
         SysDictItem sysDictItem = new SysDictItem();
@@ -76,7 +77,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper,SysDic
         } else {
             sysDictItem.setGuidDict(guidDict);
             sysDictItem.setItemName(itemName);
-            sysDictItem.setItemType(DictFromType.valueOf(itemType).toString());
+            sysDictItem.setItemType(itemType);
             sysDictItem.setItemValue(itemValue);
             sysDictItem.setSendValue(sendValue);
             sysDictItem.setSeqno(new BigDecimal(seqNo));

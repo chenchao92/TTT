@@ -37,7 +37,7 @@ public class SysDictItemController  extends BaseController {
      */
     @OperateLog(type = OperateType.ADD, desc = "新增业务字典项")
     @ApiOperation(value = "新增业务字典项", notes = "实际参数以下面DataType为准")
-    @PostMapping("/add")
+    @PostMapping
     public ResultVO addSysDictItem(@RequestBody @Validated SysDictItemRequest request) {
         SysDictItem sysDictItem = new SysDictItem();
         SysDictItem sysDictItem1 = iSysDictItemService.addDictItem(request.getGuidDict(),request.getItemName(),request.getItemType(),request.getSendValue(),request.getSendValue(),request.getSeqNo().toString(),request.getItemDesc());
@@ -52,7 +52,7 @@ public class SysDictItemController  extends BaseController {
     @PutMapping
     public ResultVO updateSysDictItem(@RequestBody @Validated SysDictItemRequest request) {
         SysDictItem sysDictItem = new SysDictItem();
-        sysDictItem = iSysDictItemService.editSysDictItem(request.getGuid(),request.getGuidDict(),request.getItemName(),request.getItemType(),request.getItemValue(),
+        sysDictItem = iSysDictItemService.editSysDictItem(request.getGuid(),request.getGuidDict(),request.getItemName(),request.getItemType(),request.getItemVlaue(),
                 request.getSendValue(),request.getSeqNo().toString(),request.getItemDesc());
         return ResultVO.success("修改成功",sysDictItem);
     }

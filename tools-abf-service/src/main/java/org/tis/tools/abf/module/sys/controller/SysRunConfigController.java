@@ -32,7 +32,7 @@ public class SysRunConfigController extends BaseController {
      */
     @OperateLog(type = OperateType.ADD, desc = "新增系统参数机构")
     @ApiOperation(value = "新增系统参数机构", notes = "实际参数以下面DataType为准")
-    @PostMapping("/add")
+    @PostMapping
     public ResultVO add(@RequestBody @Validated SysRunConfigAddRequest request) {
         SysRunConfig sysRunConfig = iSysRunConfigService.createSysRunConfig(request.getGuidApp(), request.getGroupName(),
                 request.getKeyName(), request.getValueFrom(), request.getValue(), request.getDescription());

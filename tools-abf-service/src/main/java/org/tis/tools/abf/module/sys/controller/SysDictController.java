@@ -36,11 +36,11 @@ public class SysDictController  extends BaseController {
      */
     @OperateLog(type = OperateType.ADD, desc = "新增业务字典")
     @ApiOperation(value = "新增业务字典", notes = "实际参数以下面DataType为准，guid不需要输入")
-    @PostMapping("/add")
+    @PostMapping
     public ResultVO createSysDict(@RequestBody @Validated SysDictRequest request) {
         SysDict sysDict = new SysDict();
         sysDict.setDictKey(request.getDictKey());
-        sysDict.setDictType(DictType.valueOf(request.getDictType()));
+        sysDict.setDictType(request.getDictType());
         sysDict.setDictName(request.getDictName());
         sysDict.setDictDesc(request.getDictDesc());
         sysDict.setGuidParents(request.getGuidParents());
@@ -50,7 +50,7 @@ public class SysDictController  extends BaseController {
         sysDict.setUseForName(request.getUseForName());
         sysDict.setSeqno(request.getSeqNo());
         sysDict.setSqlFilter(request.getSqlFilter());
-        sysDict.setFromType(DictFromType.valueOf(request.getFromType()));
+        sysDict.setFromType(request.getFromType());
         sysDict =  iSysDictService.addDict(sysDict);
         return ResultVO.success("添加成功",sysDict);
     }
@@ -81,7 +81,7 @@ public class SysDictController  extends BaseController {
         SysDict sysDict = new SysDict();
         sysDict.setGuid(request.getGuid());
         sysDict.setDictKey(request.getDictKey());
-        sysDict.setDictType(DictType.valueOf(request.getDictType()));
+        sysDict.setDictType(request.getDictType());
         sysDict.setDictName(request.getDictName());
         sysDict.setDictDesc(request.getDictDesc());
         sysDict.setGuidParents(request.getGuidParents());
@@ -91,7 +91,7 @@ public class SysDictController  extends BaseController {
         sysDict.setUseForName(request.getUseForName());
         sysDict.setSeqno(request.getSeqNo());
         sysDict.setSqlFilter(request.getSqlFilter());
-        sysDict.setFromType(DictFromType.valueOf(request.getFromType()));
+        sysDict.setFromType(request.getFromType());
         iSysDictService.editSysDict(sysDict);
         return ResultVO.success("修改成功",sysDict);
     }
